@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    h1= title
+    - let results=[{Cust_Name: "Ganesh",Cust_Age:25,Mail_Id:"Ganesh@gmail.com"},{Cust_Name: "uday",Cust_Age:25,Mail_Id:"uday@gmail.com"},{Cust_Name: "rakesh",Cust_Age:25,Mail_Id:"rakesh@gmail.com"}]
+    div.container-fliud
+        div.row
+            each item,ind in results 
+                div(class='col-sm-2' onclick=`buy(${ind})`) 
+                    p Name  is #{item.Cust_Name}
+                    p Age  is #{item.Cust_Age}
+                    p Mail_Id: #{item.Mail_Id}
+    
+        
