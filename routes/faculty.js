@@ -1,9 +1,6 @@
 var express = require('express');
+const faculty_controlers= require('../controllers/faculty');
 var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('faculty', { title: 'facluty' });
-});
-
+/* GET facultys */
+router.get('/', faculty_controlers.faculty_view_all_Page );
 module.exports = router;
