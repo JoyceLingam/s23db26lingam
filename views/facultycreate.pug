@@ -1,0 +1,34 @@
+extends layout
+
+block content
+ h1= title
+
+ form(id='facultyForm', action="/resource/faculty", method="POST")
+  div.form-group
+    label.facultyAttr(for='Cust_Name') Faculty Name is : 
+    input#faculty_color(type='text', name='Cust_Name')
+  div.form-group
+    label.facultyAttr(for='Cust_Age') Faculty Age is : 
+    input#faculty_length(type='text', name='Cust_Age')
+  div.form-group
+    label.facultyAttr(for='Mail_Id') Faculty Mail is : 
+    input#faculty_cost(type='text', name='Mail_Id')
+  input(type="submit")
+
+ script.
+  document.forms['facultyForm'].addEventListener('submit', (event) => {
+   event.preventDefault();
+   // TODO do something here to show user that form is being submitted
+   fetch(event.target.action, {
+    method: 'POST',
+    body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+   }).then((resp) => {
+    return resp.json(); // or resp.text() or whatever the server sends
+   }).then((body) => {
+    alert("Save succeded")
+    // TODO handle body
+   }).catch((error) => {
+    // TODO handle error
+    alert("Save failed " + error )
+   });
+  });

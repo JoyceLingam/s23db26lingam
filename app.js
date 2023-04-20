@@ -46,29 +46,36 @@ app.use('/board', boardRouter);
 app.use('/faculty', facultyRouter);
 app.use('/selector', selectorRouter);
 app.use('/resource',resourceRouter);
+  
 
 async function recreateDB(){
   // Delete everything
   await faculty.deleteMany();
   let instance1 = new faculty({Cust_Name:"Ganesh", Cust_Age:25,Mail_Id:"Ganesh@gmail.com"});
   
-  instance1.save().then( function(err,doc) {
-  if(err) return console.error(err);
-  console.log("First object saved")
+  instance1.save().then((res)=> {
+    console.log(res);
+    console.log("first object saved")
+  }).catch(err => {
+    console.log(err);
   });
  
  let instance2 = new faculty({Cust_Name:"uday", Cust_Age:25,Mail_Id:"uday@gmail.com"});
   
-  instance2.save().then( function(err,doc) {
-  if(err) return console.error(err);
-  console.log("Second object saved")
+  instance2.save().then((res) => {
+    console.log(res);
+    console.log("second object saved")
+  }).catch(err => {
+    console.log(err);
   });
  
  let instance3 = new faculty({Cust_Name:"rakesh", Cust_Age:25,Mail_Id:"rakesh@gmail.com"});
   
-  instance3.save().then( function(err,doc) {
-  if(err) return console.error(err);
-  console.log("Third object saved")
+  instance3.save().then((res) => {
+    console.log(res);
+    console.log("Third object saved")
+  }).catch(err => {
+    console.log(err);
   });
 }
  let reseed = true;

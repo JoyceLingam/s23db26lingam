@@ -1,0 +1,21 @@
+extends layout
+block content
+ h1= title
+ - let custid = toShow._id
+ - let Cust_Name = toShow.Cust_Name
+ - let Cust_Age = toShow.Cust_Age
+ - let Mail_Id = toShow.Mail_Id
+ div
+  div.row
+   div(class='facultyAttr mr-3') Faculty Id is:
+   div #{custid}
+  div.row
+   div(class='facultyAttr mr-3') Faculty Name is:
+   div #{Cust_Name}
+  div.row
+   div(class='facultyAttr mr-3') Faculty Age is:
+   div #{Cust_Age}
+  div.row
+   div(class='facultyAttr mr-3') Faculty Mail Id is:
+   div #{Mail_Id}
+  
