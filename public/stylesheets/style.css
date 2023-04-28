@@ -8,6 +8,10 @@ a {
 }
 
 .facultyAttr {
-  background-color: aquamarine;
+  background-color: rgb(191, 10, 127);
   width: 120px;
+  padding: 10px 10px 10px 10px;
+  margin: 5px 10px;
+  display: inline-block;
+
  }

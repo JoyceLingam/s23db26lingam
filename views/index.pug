@@ -1,18 +1,12 @@
 extends layout
-
 block content
-  h1= title
-  p Welcome to #{title}
-  p Hello I am Joyce 
-  button(type="button", class ="btn btn-secondary") press me
-  div(id="reduce") Reduce the value
-  a(href='http://localhost:3000/faculty') Link
-  script.
-    let count=20;
-    let change =-1;
-    function doReduce(){
-      console.log("entered fn")
-      count=count+change;
-      change=change-1;
-      document.getElementById('reduce').innerHTML=`Count ${count} with Change ${change}`
-    }
+ if (!user)
+    a(href="/login") Login
+    br
+    br
+    a(href="/register") Register
+ if (user)
+    p You are currently logged in as #{user.username}
+    a(href="/faculty") Take me to faculty
+    br
+    a(href="/logout") Logout

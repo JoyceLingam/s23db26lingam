@@ -1,15 +1,100 @@
-extends layout
+//-extends layout
 
-block content
+//-block content
     h1= title
     - var faculty=results
       div.container-fliud
-      div.row
-        each item,ind in faculty 
-          div(class='col-sm-2' onclick=`buy(${ind})`) 
-            p Name  is #{item.Cust_Name}
-            p Age  is #{item.Cust_Age}
-            p Mail_Id: #{item.Mail_Id}
+        div.row
+          each item,ind in faculty 
+            - let destination = `dispatch(\"/faculty/update?id=${item._id}\")`
+            div(class='col-sm-2')
+              p Name  is #{item.Cust_Name}
+              p Age  is #{item.Cust_Age}
+              p Mail_Id: #{item.Mail_Id}
+              button.btn( class="btn-primary ml-1", onclick= destination) Update
+      script.
+            function dispatch(path){
+              window.location.href=path
+            }
+extends layout
 
-    
+block content
+  script.
+    function load(){
+      console.log("cared")
+    }
+  style.
+    a{
+      height:30px;
+      font-size:12px !important;
+      margin:4px;
+    }
+    .item{
+      position:fixed;
+      bottom:0;
+      z-index:-100
+    }
+    .img1{
+      right:30;
+    }
+    .img2{
+      right:30px;
+
+    }
+    body{
+       background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fcommunitycollegesusa.com%2Fen%2Fschools%2Fp%2Fmo012%2Fnorthwest-missouri-state-university&psig=AOvVaw0sp8OVoYXMF1DC6cDQjY1M&ust=1682456545759000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCJiTwpi1w_4CFQAAAAAdAAAAABAE);
+      //-  background:black;
+       background-size:cover;
+
+      
+      height:100vh;
+      background-repeat:no-repeat;
+    }
+    p{
+      text-align:center;
+      width:100%;
+    }
+    .row{
+      display:flex;
+      justify-content:center
+    }
+    h3{
+      text-align:center;
+      width :100%;
+    }
+    h1{
+      color:white;
+      text-shadow:1px 1px 12px black;
+    }
+    #buttons{
+      border-radius:12px;
+      width:100%;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-evenly
+    }
+    .center{
+      text-align:center;
+      position:relative;
+      top:50%;
+      transform:translateY(-50%);
+    }
+
+  .center
+    h1= title
+    a(class='btn btn-primary' href=`/faculty/create`) Create new faculty Instance
+    .container-fluid(onload='load()')
+      .row 
+        each faculty,key in results
+          div(class="col-sm-2" style=`margin:5px;border-radius:12px;text-align:center;background:white;border:solid 2px black;display:flex;flex-direction:row;flex-wrap:wrap` onclick=`buy(${key})`) 
+              h3= faculty.Stu_Name
+              div#buttons
+                a(class='btn btn-primary' href=`/faculty/detail/?id=${faculty._id}`) Details
+                a(class='btn btn-primary' href=`/faculty/update/?id=${faculty._id}`) Update
+                a(class='btn btn-primary' href=`/faculty/delete/?id=${faculty._id}`) Delete
+  script.
+    function load(){
+      console.log("cared")
+    }
+
         
